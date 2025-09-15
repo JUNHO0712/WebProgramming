@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 프로그래밍 주차별 학습 정리</title>
+    <style>
+        /* 기본 스타일 초기화 및 설정 */
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 1000px; /* 콘텐츠 최대 너비 설정 */
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        /* 메인 콘텐츠 영역을 Flexbox 컨테이너로 설정 */
+        main {
+            display: flex;
+            flex-direction: column; /* 아이템을 세로로 정렬 */
+            gap: 40px; /* 각 섹션 사이의 간격 */
+            background-color: #ffffff;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        /* 각 смысловой блок */
+        section {
+            width: 100%;
+        }
+
+        /* 제목 스타일 */
+        h1, h2, h3 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* 웹 페이지 소개 영역 스타일 */
+        .intro-meta p {
+            font-size: 1rem;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        /* 테이블 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* 테두리 한 줄로 합치기 */
+            text-align: left;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            vertical-align: top; /* 내용이 길어져도 위쪽 정렬 */
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        td ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        /* 상세 내용 정리 article 스타일 */
+        .details-section article {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>웹 프로그래밍 주차별 학습 정리</h1>
+    </header>
+
+    <main>
+        <section class="introduction">
+            <div class="intro-meta">
+                <p><strong>이름:</strong> 백준호</p>
+                <p><strong>학부:</strong> 컴퓨터공학부</p>
+            </div>
+            <h2>▼ 웹 페이지 소개</h2>
+            <p>
+                해당 페이지는 웹 프로그래밍 16주차 강의에 대한 학습 내용을 작성합니다.<br>
+                이를 통해 강의를 통해 학습한 내용을 정리하고 시간이 지나도 복습이 가능하도록 합니다.
+            </p>
+        </section>
+
+        <section class="summary-table">
+            <h2>주차별 학습 내용 목차</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">주차</th>
+                        <th style="width: 35%;">학습 주제</th>
+                        <th>학습 내용</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align: center;"><strong>1주차</strong></td>
+                        <td>
+                            <ul>
+                                <li>웹의 기본 개념</li>
+                                <li>웹의 작동 방식</li>
+                                <li>클라이언트와 서버의 상호작용</li>
+                                <li>HTTP 개념</li>
+                                <li>Visual Studio 실습</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="#week1-details"><strong>1주차 학습 상세 내용</strong></a>
+                            <p>- 웹이 동작하는 기본 원리와 클라이언트/서버 구조를 이해한다.<br>- HTTP 요청-응답 흐름을 학습하고, Visual Studio를 설치하여 간단한 프로젝트를 실행한다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;"><strong>2주차</strong></td>
+                        <td>
+                            <ul>
+                                <li>HTML 기본 구조</li>
+                                <li>주요 태그</li>
+                                <li>블록 태그와 인라인 태그</li>
+                                <li>메타 데이터</li>
+                                <li>기타 태그들</li>
+                                <li>미디어 삽입</li>
+                                <li>시맨틱 태그</li>
+                                <li>폼 디자인 요소</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="#week2-details"><strong>2주차 학습 상세 내용</strong></a>
+                            <p>- HTML의 구조와 시맨틱 태그의 의미를 이해한다.<br>- input 태그 유형에 대해 학습한다.<br>- 문서 구조화에 대해 이해한다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;"><strong>3주차</strong></td>
+                        <td>
+                            <ul>
+                                <li>display: flex</li>
+                                <li>display: grid</li>
+                                <li>CSS 리셋</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="#week3-details"><strong>3주차 학습 상세 내용</strong></a>
+                            <p>- CSS 사용법을 익힌다.<br>- display 사용법과 flex와 grid의 차이점을 이해한다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="details-section">
+            <h2>학습 상세 내용</h2>
+            
+            <article id="week1-details">
+                <h3>1주차: 웹 기본 개념과 환경 설정</h3>
+                <p>1주차에는 웹의 기본적인 동작 원리에 대해 배웠습니다. 클라이언트가 서버에 HTTP 프로토콜을 통해 자원을 요청(request)하면, 서버는 그에 맞는 응답(response)을 보내주는 과정을 학습했습니다. 또한, 개발 환경 구축을 위해 Visual Studio를 설치하고 새로운 프로젝트를 생성하는 실습을 진행했습니다.</p>
+            </article>
+
+            <article id="week2-details">
+                <h3>2주차: HTML 기본 구조와 태그</h3>
+                <p>HTML이 웹 페이지의 뼈대를 구성하는 언어임을 배웠습니다. `<div>`, `<p>`, `<span>` 등 다양한 태그의 사용법과, 문서의 의미를 명확히 하는 시맨틱 태그(`&lt;header&gt;`, `&lt;nav&gt;`, `&lt;main&gt;` 등)의 중요성을 이해했습니다. 사용자의 입력을 받는 `&lt;form&gt;`과 `&lt;input&gt;` 태그에 대해서도 학습했습니다.</p>
+            </article>
+
+            <article id="week3-details">
+                <h3>3주차: CSS 레이아웃 (Flexbox & Grid)</h3>
+                <p>CSS를 통해 HTML 요소의 스타일을 지정하는 방법을 배웠습니다. 특히 레이아웃을 구성하는 현대적인 방식인 Flexbox와 Grid에 초점을 맞췄습니다. Flexbox는 1차원(한 방향) 레이아웃에, Grid는 2차원(행과 열) 레이아웃에 최적화되어 있음을 이해하고 각각의 기본 사용법을 실습했습니다.</p>
+            </article>
+        </section>
+    </main>
+
+</body>
+</html>

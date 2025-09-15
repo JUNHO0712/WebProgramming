@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJH 웹 홈페이지</title>
+    <style>
+        /* 기본 Body 스타일 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: grid; /* 메인 레이아웃에 Grid 사용 */
+            grid-template-rows: auto 1fr auto; /* 헤더, 메인 콘텐츠, 푸터 */
+            min-height: 100vh;
+        }
+
+        /* Flexbox를 사용한 헤더 스타일 */
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem 2rem;
+            display: flex; /* 정렬을 위해 Flexbox 사용 */
+            justify-content: center; /* 제목 중앙 정렬 */
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        /* 메인 콘텐츠 래퍼 */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto; /* 콘텐츠 중앙 배치 */
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 메인 콘텐츠를 위한 Grid 레이아웃 */
+        main {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* 2열 구조: 정보(좌), 테이블(우) */
+            gap: 2rem; /* 열 사이의 간격 */
+        }
+        
+        /* 사용자 정보 섹션 */
+        .user-info {
+            padding-right: 2rem;
+            border-right: 1px solid #ddd;
+        }
+
+        .user-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Details & Summary 스타일 */
+        details {
+            margin-top: 1.5rem;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+        }
+
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #3498db;
+        }
+        
+        ul {
+            margin-top: 0.5rem;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 테이블 스타일 */
+        .table-wrap {
+            overflow-x: auto; /* 반응형을 위해 */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* 깔끔한 테두리 */
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        thead th {
+            background-color: #3498db;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2; /* 짝수 행 배경색 */
+        }
+
+        tbody tr:hover {
+            background-color: #e8f4fd; /* 마우스 호버 효과 */
+        }
+
+        /* Flexbox를 사용한 푸터 스타일 */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex; /* 정렬을 위해 Flexbox 사용 */
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* 작은 화면을 위한 반응형 디자인 */
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr; /* 열을 세로로 쌓음 */
+            }
+            .user-info {
+                border-right: none; /* 쌓였을 때 오른쪽 테두리 제거 */
+                padding-right: 0;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>나의 웹 프로그래밍 학습 홈페이지</h1>
+    </header>
+
+    <div class="container">
+        <main>
+            <section class="user-info" aria-labelledby="intro-title">
+                <h2 id="intro-title" style="margin-top:0;">소개</h2>
+                <p>
+                    - 제목: HTML 문서 작성 (실습)<br>
+                    - 이름: 백준호<br>
+                    - 학부: 컴퓨터공학과
+                </p>
+                
+                <p>
+                    <b>2주차 학습 내용:</b> HTML 문서 구조와 기본 태그
+                </p>
+                
+                <details>
+                    <summary>학습 내용 구성 안내</summary>
+                    <ul>
+                        <li>시맨틱 구조: <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code></li>
+                        <li>접이식 소개: <code>&lt;details&gt;</code>와 <code>&lt;summary&gt;</code>를 사용해 안내 토글</li>
+                        <li>주요 일정: 주차별 주제를 표로 요약</li>
+                        <li>상세 기록: 표 아래에 과제/실습/메모 기술</li>
+                    </ul>
+                </details>
+            </section>
+    
+            <section class="table-wrap" role="region" aria-label="학습 계획 표">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">주차</th>
+                            <th scope="col">강의 주제</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">1주</th><td>강의 개요, 웹 개념(HTTP, 클라이언트–서버), <em>VS Code 설치</em> 및 간단한 HTML</td></tr>
+                        <tr><th scope="row">2주</th><td>HTML5 (교재 1–3장): 문서 구조, 기본 태그, 폼/멀티미디어, (실습) HTML 문서 작성</td></tr>
+                        <tr><th scope="row">3주</th><td>CSS (교재 4–5장): 문법, 박스모델, 레이아웃, (실습) CSS 적용</td></tr>
+                        <tr><th scope="row">4주</th><td>JavaScript 기초 (교재 6장), 코어/사용자 객체(7장), (실습) JS 객체</td></tr>
+                        <tr><th scope="row">5주</th><td>DOM (8장): 요소 선택/조작, (실습) 동적 웹페이지 작성</td></tr>
+                        <tr><th scope="row">6주</th><td>이벤트 (9장): 기본/핸들링, (실습) 이벤트 핸들링 코드 작성</td></tr>
+                        <tr><th scope="row">7주</th><td>BOM (10장) & 캔버스 그래픽(11장), (실습) BOM 조작/그리기</td></tr>
+                        <tr><th scope="row">8주</th><td>중간고사</td></tr>
+                        <tr><th scope="row">9주</th><td>웹 스토리지(12장): 쿠키, 세션/로컬 스토리지, (실습) 스토리지 조작</td></tr>
+                        <tr><th scope="row">10주</th><td>오디오/비디오 제어 & 웹워커(13장), (실습) 미디어 컨트롤러/워커 통신</td></tr>
+                        <tr><th scope="row">11주</th><td>고급 JS: ES6, 데이터 타입, 호이스팅, 클로저/함수형 프로그래밍, (실습) 디버거</td></tr>
+                        <tr><th scope="row">12주</th><td>Node.js: 소개/기본/비동기, (실습) 모듈 활용 웹 서버 만들기</td></tr>
+                        <tr><th scope="row">13주</th><td>Express.js (1): 소개, 미들웨어, 라우터, (실습) 미들웨어 함수</td></tr>
+                        <tr><th scope="row">14주</th><td>Express.js (2): MongoDB 연동, CRUD API 작성</td></tr>
+                        <tr><th scope="row">15주</th><td>기말고사</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 백준호. 모든 권리 보유.</p>
+    </footer>
+
+</body>
+</html>

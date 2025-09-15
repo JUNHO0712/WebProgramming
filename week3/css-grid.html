@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 반응형 웹을 위한 기본 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display : Grid</title>
+</head>
+<body>
+     <!-- 📌 첫 번째 grid 컨테이너 -->
+    <div style="grid-gap:10px 10px;
+                display:grid; 
+                grid-template-columns:1fr 2fr 1fr;">
+        <!-- grid-gap: 행/열 간격 10px
+             display:grid; → CSS Grid 활성화
+             grid-template-columns: 1fr 2fr 1fr → 3열 구조 (비율 1:2:1) -->
+
+        <!-- grid 아이템들 -->
+        <div style="grid-column: 1/3; background-color:aliceblue">Item1</div>
+        <!-- grid-column: 1/3 → 첫 번째~두 번째 열까지 가로로 합쳐서 차지 -->
+
+        <div style="background-color:pink">Item2</div>
+        <div style="background-color:yellow">Item3</div>
+        <div style="background-color:beige">Item4</div>
+    </div>
+
+    <br><br>
+    <hr><br><br>
+
+    <!-- 📌 두 번째 grid 컨테이너 (grid-template-areas 활용) -->
+    <div style="display:grid; 
+                grid-template-areas: 
+                    'header header'
+                    'sidebar content'
+                    'footer footer';
+                grid-template-columns:150px 1fr; 
+                grid-template-rows:auto 1fr auto;">
+        <!-- display:grid; → Grid 레이아웃 활성화
+             grid-template-areas → 영역 이름(header, sidebar, content, footer) 정의
+             grid-template-columns: 150px 1fr → 첫 번째 열은 150px, 두 번째 열은 가변
+             grid-template-rows: auto 1fr auto → 행 높이: 자동/가변/자동 -->
+
+        <!-- grid 아이템들 (각각 grid-area로 연결) -->
+        <div style="grid-area: header; background-color:aliceblue">Item1</div>
+        <!-- grid-area: header → 첫 번째 행 전체(header 영역) 차지 -->
+
+        <div style="grid-area: content; background-color:pink">Item2</div>
+        <!-- grid-area: content → 본문(content 영역) -->
+
+        <div style="grid-area: sidebar; background-color:yellow">Item3</div>
+        <!-- grid-area: sidebar → 본문 왼쪽에 사이드바 -->
+
+        <div style="grid-area: footer; background-color:beige">Item4</div>
+        <!-- grid-area: footer → 마지막 행 전체(footer 영역) -->
+    </div>
+
+</body>
+</html>

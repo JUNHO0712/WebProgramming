@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display : Grid</title>
+    <style>
+        /* flexbox 컨테이너 정의 */
+        .flex-container{
+            display: flex;                  /* flexbox 레이아웃 활성화 */
+            /*flex-direction: column;          주축을 세로 방향(column)으로 설정 */
+            /*justify-content: center;         주축(세로) 기준 중앙 정렬 */
+            align-items: baseline;          /* 교차축(가로) 기준 정렬 */
+        }
+        .flex-item{
+            flex-grow: 1;                   /*남는 공간 비율 */
+            flex-shrink: 1;                 /* 공간 부족 시 줄어듦 */
+            flex-basis: 200px;              /* 기본 크기 100px */
+            
+        }
+    </style>
+</head>
+<body>
+     <!-- flex 컨테이너 -->
+    <div class="flex-container">
+        <!-- flex 아이템들 -->
+        <div style="background-color:aliceblue" class ="flex-item">Item1</div>
+        <div style="background-color:pink" class ="flex-item">Item2</div>
+        <div style="background-color:yellow" class ="flex-item">Item3</div>
+    </div>
+</body>
+</html>
