@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박규나-1</title>
+    <script>
+        function change_backgroundColor() {
+            const colorSelect = document.querySelector("select");
+            const selectedColor = colorSelect.value;
+            document.body.style.backgroundColor = selectedColor;
+            localStorage.setItem("backgroundColor", selectedColor); 
+        }
+
+        function select_image() {
+            const selectedImage = document.querySelector('input[name="fruit-image"]:checked');
+            if (selectedImage) {
+                const imageSrc = selectedImage.value;
+                document.getElementById("img_place").src = imageSrc;
+                localStorage.setItem("selectedImage", imageSrc);
+            }
+        }
+
+        function init() {
+            const savedColor = localStorage.getItem("backgroundColor");
+            if (savedColor) {
+                document.body.style.backgroundColor = savedColor;
+                document.querySelector("select").value = savedColor;
+            }
+            const savedImage = localStorage.getItem("selectedImage");
+            if (savedImage) {
+                document.getElementById("img_place").src = savedImage;
+                const radios = document.querySelectorAll('input[name="fruit-image"]');
+                radios.forEach((radio) => {
+                    if (radio.value === savedImage) {
+                        radio.checked = true;
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    배경색:
+    <select>
+        <option>lightblue</option>
+        <option>beigh</option>
+        <option>lightgrey</option>
+    </select>
+    <br><br>
+    <hr>
+    이미지 : 
+    <input type = 'radio' name="fruit-image" value="apple.png" >사과
+    <input type = 'radio' name="fruit-image" value="mango.png">망고
+    <input type = 'radio' name="fruit-image" value="banana.png">바나나
+    <br><br>
+    <img src="" id="img_place" alt="여기에 이미지가 나타납니다.">
+</body>
+</html>

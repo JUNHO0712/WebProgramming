@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>정답</title>
+	<script>
+		function drawCircle(ctx, x, y, radius) {
+			ctx.beginPath();
+			ctx.arc(x, y, radius, 0, 2*Math.PI);
+			ctx.stroke();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="100" height="100" style="background-color:aliceblue"></canvas>
+	<script>
+		let canvas = document.getElementById("myCanvas");
+		let context = canvas.getContext("2d");
+		drawCircle(context, 50, 50, 40);
+	</script>
+</body>
+</html>

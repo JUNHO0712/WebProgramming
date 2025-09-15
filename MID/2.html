@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function check(e) {
+            const spans = document.querySelectorAll('span');
+            spans.forEach(span => span.style.backgroundColor = '');
+            let select = e.nextElementSibling;
+            if (select.textContent.trim() === "5") {
+                select.style.backgroundColor = 'lightgreen';
+            } else {
+                select.style.backgroundColor = 'lightpink';
+            }
+        }
+    </script>
+</head>
+<body>
+    2 + 3 = ?<br><br>
+    <input type="radio" name="answer" onclick="check(this)"><span>1</span><br>
+    <input type="radio" name="answer" onclick="check(this)"><span>3</span><br>
+    <input type="radio" name="answer" onclick="check(this)"><span>5</span><br>
+    <input type="radio" name="answer" onclick="check(this)"><span>7</span><br>
+</body>
+</html>

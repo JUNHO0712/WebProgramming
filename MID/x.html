@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>정답</title>
+    <script>
+        function drawX(ctx, x, y, size) {
+            ctx.beginPath();
+            ctx.moveTo(x - size, y - size); // 왼쪽 위에서 시작
+            ctx.lineTo(x + size, y + size); // 오른쪽 아래로
+            ctx.moveTo(x + size, y - size); // 오른쪽 위로
+            ctx.lineTo(x - size, y + size); // 왼쪽 아래로
+            ctx.stroke(); // 선 그리기
+        }
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="100" height="100" style="background-color:aliceblue"></canvas>
+    <script>
+        let canvas = document.getElementById("myCanvas");
+        let context = canvas.getContext("2d");
+        drawX(context, 50, 50, 40); // X 그리기
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+    <script>
+        function input(){
+            let info = prompt("이름과 나이를 입력하세요. ex) 박규나, 23");
+            let [name,age]=info.split(',');
+            name = name.trim();
+            age = age.trim();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        Officer 1:
+        <script>
+            let obj = new Object();
+            obj.name = name;
+            obj.age = age;
+        
+            document.write("by new Object - 이름 : " + name + ", 나이 : " + age );
+        </script>
+
+
+        <br>Officer 2: 
+
+
+
+        <br>Officer 3: 
+
+
+
+        <br>Officer 4: 
+
+
+
+
+    </div>
+    <br><br>
+    <input type="button" value="Officer 정보 입력" onclick="input()">
+</body>
+</html>
