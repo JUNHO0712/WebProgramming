@@ -13,13 +13,13 @@
         console.log("----- new Object() 방식 -----");
         console.log(aLecture.korName + "(" + aLecture.engName + " / " + aLecture.classCode + ")");
         console.log("-----------------------------------------")
-        aLecture.register("홍길동");
+        aLecture.register("백준호");
         aLecture.register("김삿갓");
         for (let i = 0; i < aLecture.nStudents; i++) {
             console.log(aLecture.getStudentNames(i));
         };
         console.log("----- 학생 수: " + aLecture.nStudents + " -----");
-        aLecture.unregister("홍길동");
+        aLecture.unregister("백준호");
         for (let i = 0; i < aLecture.nStudents; i++) {
             console.log(aLecture.getStudentNames(i));
         };
