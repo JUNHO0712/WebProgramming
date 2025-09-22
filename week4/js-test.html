@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="makeObjects.js"></script>
+    <title>JS Object Practice</title>
+</head>
+<body>
+    <h1>JavaScript Object Practice</h1>
+    <script>
+        // new Object() 방식
+        console.log("----- new Object() 방식 -----");
+        console.log(aLecture.korName + "(" + aLecture.engName + " / " + aLecture.classCode + ")");
+        console.log("-----------------------------------------")
+        aLecture.register("홍길동");
+        aLecture.register("김삿갓");
+        for (let i = 0; i < aLecture.nStudents; i++) {
+            console.log(aLecture.getStudentNames(i));
+        };
+        console.log("----- 학생 수: " + aLecture.nStudents + " -----");
+        aLecture.unregister("홍길동");
+        for (let i = 0; i < aLecture.nStudents; i++) {
+            console.log(aLecture.getStudentNames(i));
+        };
+        console.log("----- 학생 수: " + aLecture.nStudents + " -----");
+        console.log("-----------------------------------------\n\n");
+
+        // object literal 방식
+        console.log("----- Literal 표기법 방식 -----");
+        console.log(bLecture.korName + "(" + bLecture.engName + " / " + bLecture.classCode + ")");
+        console.log("-----------------------------------------");
+        bLecture.register("이몽룡");
+        bLecture.register("성춘향");
+        for (let i = 0; i < bLecture.nStudents; i++) {
+            console.log(bLecture.getStudentNames(i));
+        };
+        console.log("----- 학생 수: " + bLecture.nStudents + " -----");
+        bLecture.unregister("성춘향");
+        for (let i = 0; i < bLecture.nStudents; i++) {
+            console.log(bLecture.getStudentNames(i));
+        };
+        console.log("----- 학생 수: " + bLecture.nStudents + " -----");
+        console.log("-----------------------------------------");
+        console.log("-----------------------------------------\n\n");
+
+
+        // Prototype 방식
+        console.log("----- Prototype 방식 -----");
+        let cLecture = new Lecture("웹프로그래밍", "Web Programming", "V024003");
+        console.log(cLecture.korName + "(" + cLecture.engName + " / " + cLecture.classCode + ")");
+        console.log("-----------------------------------------");
+        cLecture.register("박문수");
+        cLecture.register("임꺽정");
+        for (let i = 0; i < cLecture.nStudents; i++) {
+            console.log(cLecture.getStudentNames(i));
+        };
+        console.log("----- 학생 수: " + cLecture.nStudents + " -----");
+        cLecture.unregister("박문수");
+        for (let i = 0; i < cLecture.nStudents; i++) {
+            console.log(cLecture.getStudentNames(i));
+        };
+        console.log("----- 학생 수: " + cLecture.nStudents + " -----");
+        console.log("-----------------------------------------");
+
+    </script>
+</body>
+</html>
