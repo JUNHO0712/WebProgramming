@@ -14,9 +14,71 @@
     }
 
     /* ---------- 제목 꾸미기 ---------- */
-    body{margin:0; font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif; line-height:1.6; scroll-behavior:smooth; background:#fff;}
-    main{padding:20px;}
-    h2{margin:22px 0 10px; color:var(--ink)}
+   /* 화면 바깥 배경 (양옆 공백처럼 보이게) */
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  line-height:1.6;
+  scroll-behavior:smooth;
+  background:#f6f7fb;
+  box-sizing:border-box;
+}
+*, *::before, *::after{ box-sizing:inherit; }
+
+/* 가운데 카드 래퍼 (폭: 92vw를 넘지 않되 1100px까지만) */
+.page{
+  width: min(1100px, 92vw);
+  margin: 28px auto;
+  background:#fff;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+
+/* 헤더 */
+header{
+  text-align:center;
+  padding: clamp(16px, 3vw, 28px) clamp(12px, 2vw, 24px);
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
+}
+
+/* 제목 배너 – 고정 300px 제거, 반응형 패딩/폰트로 */
+header h1{
+  display:inline-block;
+  background:#fde68a;
+  color:#111827;
+  padding: 12px clamp(28px, 6vw, 80px);
+  border-radius: 9999px;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+/* 소개는 왼쪽 정렬 + 폭 제한 */
+header details{
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* 메인 여백 – 고정 200px 제거 */
+main{
+  padding: clamp(16px, 2.2vw, 28px);
+}
+
+/* 구분선 기본값 통일(브라우저별 차이 제거) */
+hr{
+  margin: 16px 0;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* 표가 래퍼 안에서 넘치지 않도록 */
+.table-wrap{ overflow:auto; border:1px solid #e5e7eb; border-radius:10px; }
+table{ width:100%; border-collapse:collapse; min-width:720px; }
+
+/* 나머지 기존 스타일은 그대로 두셔도 OK */
 
     /* ---------- 링크 색상 ---------- */
     a{color:var(--link); text-decoration:none;}
@@ -61,16 +123,32 @@
     .weeks{display:flex; flex-direction:column; gap:18px; margin-top:8px}
     .week{border:1px solid var(--border); border-radius:10px; padding:16px}
     .week h2{margin:0 0 6px}
+
+    /* ---------- footer ---------- */
+    footer{background:#1f2937; color:#fff; text-align:center; padding:16px;}
+    footer small{opacity:0.8;}
   </style>
 </head>
 <body>
-  <header>
-    
+    <div class="page">
+    <header>
+    <hr>
+    <!-- 1. 웹페이지 제목 -->
+    <h1 id="page-title">Web Programming 학습 정리</h1>
+    <br><br>
+    <!-- 2. 웹페이지 소개 -->
+    <details>
+      <summary><strong>웹페이지 소개</strong></summary>
+      <p>- 제목 : HTML 문서 작성(실습)<br>
+         - 이름 : 백준호<br>
+         - 학부 : 컴퓨터공학과</p>
+    </details>
   </header>
 
+  <br><br><hr>
   <main>
-    <!-- 15주 강의 계획 V1 - 표 -->
-    <section>
+    <!-- 3. 15주 강의계획 표 -->
+    <section id="course-plan">
       <h2>15주 강의 계획 V1 (표 형식)</h2>
       <div class="table-wrap">
         <table>
@@ -108,8 +186,9 @@
       </div>
     </section>
 
-    <!-- 15주 강의 계획 V2 - 카드 -->
-    <section>
+    <br><br><hr>
+    <!-- 3. 15주 강의계획 카드 -->
+    <section id="course-plan2">
       <h2>15주 강의 계획 V2 (카드 형식)</h2>
       <div class="grid-cards">
         <div class="card bg1"><h3><a href="#week1">1주: 웹 개발 개론</a></h3></div>
@@ -130,8 +209,9 @@
       </div>
     </section>
 
-    <!-- 상세 학습 내용 -->
-    <section>
+    <hr>
+    <!-- 4. 상세 강의내용 -->
+    <section id="details">
       <h2>상세 학습 내용</h2>
       <div class="weeks">
         <div id="week1"  class="week bg1"><h2>1주차: 웹 개발 개론</h2><p>...</p></div>
@@ -152,5 +232,12 @@
       </div>
     </section>
   </main>
+
+  <hr>
+  <!-- 5. Copyright -->
+  <footer>
+    <p><small>&copy; 2025 BJH. All rights reserved.</small></p>
+  </footer>
+    </div>
 </body>
 </html>
