@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BJH Web Home</title>
+  <style>
+    /* ---------- 색상 팔레트 (주차별 공통) ---------- */
+    :root{
+      --w1:#f3eff7;  --w2:#fbeedb;  --w3:#9ac993;  --w4:#e5e5f2;  --w5:#c7c3e1;
+      --w6:#ded9d0;  --w7:#c7c6f3;  --w8:#c9c4bc;  --w9:#aad0a4;  --w10:#bbbaf2;
+      --w11:#d9d1de; --w12:#e3e4dd; --w13:#c7ddc3; --w14:#b6afa7; --w15:#ebf0e6;
+      --border:#e5e7eb; --ink:#1f2937; --link:#2563eb;
+    }
+
+    /* ---------- 제목 꾸미기 ---------- */
+    body{margin:0; font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif; line-height:1.6; scroll-behavior:smooth; background:#fff;}
+    main{padding:20px;}
+    h2{margin:22px 0 10px; color:var(--ink)}
+
+    /* ---------- 링크 색상 ---------- */
+    a{color:var(--link); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    a:visited{color:#6b21a8;} /* 방문한 링크 보라색 */
+
+    /* ---------- 15주 계획 V1 - 표 ---------- */
+    .table-wrap{overflow:auto; border:1px solid var(--border); border-radius:10px;}
+    table{border-collapse:collapse; width:100%; min-width:720px;}
+    th,td{padding:12px 14px; text-align:left; border-bottom:1px solid #eee;}
+    thead th{
+      background:#22c55e;   /* 초록색 헤더 */
+      color:#fff;
+      font-weight:700;
+    }
+    tbody tr:nth-child(odd){background:#fafafa;}
+    tbody tr:nth-child(even){background:#f5f5f7;}
+    tbody tr:hover{background:#eef2ff; cursor:pointer;}
+    .t-bullets{padding:0; margin:0; list-style:none;}
+    .t-bullets li{position:relative; padding-left:14px; line-height:1.45;}
+    .t-bullets li::before{content:"•"; position:absolute; left:0; top:0; color:#111; opacity:.7;}
+
+    /* ---------- 15주 계획 V2 - 카드(Grid 5행 3열) ---------- */
+    .grid-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:16px 0}
+    .card{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:18px;
+      min-height:120px;  /* 카드 높이 확보 */
+      display:flex; align-items:flex-start;
+      transition:transform .18s ease;
+    }
+    .card:hover{transform:scale(1.02);}
+    .card h3{margin:0; font-size:1.05rem; font-weight:700;}
+
+    /* 주차별 배경색 */
+    .bg1{background:var(--w1)} .bg2{background:var(--w2)} .bg3{background:var(--w3)} .bg4{background:var(--w4)} .bg5{background:var(--w5)}
+    .bg6{background:var(--w6)} .bg7{background:var(--w7)} .bg8{background:var(--w8)} .bg9{background:var(--w9)} .bg10{background:var(--w10)}
+    .bg11{background:var(--w11)} .bg12{background:var(--w12)} .bg13{background:var(--w13)} .bg14{background:var(--w14)} .bg15{background:var(--w15)}
+
+    /* ---------- 상세 학습 내용 - Flex 카드 ---------- */
+    .weeks{display:flex; flex-direction:column; gap:18px; margin-top:8px}
+    .week{border:1px solid var(--border); border-radius:10px; padding:16px}
+    .week h2{margin:0 0 6px}
+  </style>
+</head>
+<body>
+  <header>
+    
+  </header>
+
+  <main>
+    <!-- 15주 강의 계획 V1 - 표 -->
+    <section>
+      <h2>15주 강의 계획 V1 (표 형식)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>주차</th><th>주제</th><th>주요 내용</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1주차</td>
+              <td><a href="#week1">웹 개발 개론</a></td>
+              <td>
+                <ul class="t-bullets">
+                  <li>강의 개요</li>
+                  <li>웹의 구조</li>
+                  <li>Visual Studio Code</li>
+                </ul>
+              </td>
+            </tr>
+            <tr><td>2주차</td><td><a href="#week2">HTML 기초</a></td><td></td></tr>
+            <tr><td>3주차</td><td><a href="#week3">HTML 심화</a></td><td></td></tr>
+            <tr><td>4주차</td><td><a href="#week4">CSS 기초</a></td><td></td></tr>
+            <tr><td>5주차</td><td><a href="#week5">CSS 레이아웃</a></td><td></td></tr>
+            <tr><td>6주차</td><td><a href="#week6">CSS 심화</a></td><td></td></tr>
+            <tr><td>7주차</td><td><a href="#week7">JavaScript 기초</a></td><td></td></tr>
+            <tr><td>8주차</td><td><a href="#week8">중간고사</a></td><td></td></tr>
+            <tr><td>9주차</td><td><a href="#week9">JavaScript DOM</a></td><td></td></tr>
+            <tr><td>10주차</td><td><a href="#week10">JavaScript 이벤트</a></td><td></td></tr>
+            <tr><td>11주차</td><td><a href="#week11">AJAX와 API</a></td><td></td></tr>
+            <tr><td>12주차</td><td><a href="#week12">프레임워크 소개</a></td><td></td></tr>
+            <tr><td>13주차</td><td><a href="#week13">반응형 웹 디자인</a></td><td></td></tr>
+            <tr><td>14주차</td><td><a href="#week14">웹 성능 최적화</a></td><td></td></tr>
+            <tr><td>15주차</td><td><a href="#week15">기말고사</a></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 15주 강의 계획 V2 - 카드 -->
+    <section>
+      <h2>15주 강의 계획 V2 (카드 형식)</h2>
+      <div class="grid-cards">
+        <div class="card bg1"><h3><a href="#week1">1주: 웹 개발 개론</a></h3></div>
+        <div class="card bg2"><h3><a href="#week2">2주: HTML 기초</a></h3></div>
+        <div class="card bg3"><h3><a href="#week3">3주: HTML 심화</a></h3></div>
+        <div class="card bg4"><h3><a href="#week4">4주: CSS 기초</a></h3></div>
+        <div class="card bg5"><h3><a href="#week5">5주: CSS 레이아웃</a></h3></div>
+        <div class="card bg6"><h3><a href="#week6">6주: CSS 심화</a></h3></div>
+        <div class="card bg7"><h3><a href="#week7">7주: JavaScript 기초</a></h3></div>
+        <div class="card bg8"><h3><a href="#week8">8주: 중간고사</a></h3></div>
+        <div class="card bg9"><h3><a href="#week9">9주: JavaScript DOM</a></h3></div>
+        <div class="card bg10"><h3><a href="#week10">10주: JavaScript 이벤트</a></h3></div>
+        <div class="card bg11"><h3><a href="#week11">11주: AJAX와 API</a></h3></div>
+        <div class="card bg12"><h3><a href="#week12">12주: 프레임워크 소개</a></h3></div>
+        <div class="card bg13"><h3><a href="#week13">13주: 반응형 웹 디자인</a></h3></div>
+        <div class="card bg14"><h3><a href="#week14">14주: 웹 성능 최적화</a></h3></div>
+        <div class="card bg15"><h3><a href="#week15">15주: 기말고사</a></h3></div>
+      </div>
+    </section>
+
+    <!-- 상세 학습 내용 -->
+    <section>
+      <h2>상세 학습 내용</h2>
+      <div class="weeks">
+        <div id="week1"  class="week bg1"><h2>1주차: 웹 개발 개론</h2><p>...</p></div>
+        <div id="week2"  class="week bg2"><h2>2주차: HTML 기초</h2><p>...</p></div>
+        <div id="week3"  class="week bg3"><h2>3주차: HTML 심화</h2><p>...</p></div>
+        <div id="week4"  class="week bg4"><h2>4주차: CSS 기초</h2><p>...</p></div>
+        <div id="week5"  class="week bg5"><h2>5주차: CSS 레이아웃</h2><p>...</p></div>
+        <div id="week6"  class="week bg6"><h2>6주차: CSS 심화</h2><p>...</p></div>
+        <div id="week7"  class="week bg7"><h2>7주차: JavaScript 기초</h2><p>...</p></div>
+        <div id="week8"  class="week bg8"><h2>8주차: 중간고사</h2><p>...</p></div>
+        <div id="week9"  class="week bg9"><h2>9주차: JavaScript DOM</h2><p>...</p></div>
+        <div id="week10" class="week bg10"><h2>10주차: JavaScript 이벤트</h2><p>...</p></div>
+        <div id="week11" class="week bg11"><h2>11주차: AJAX와 API</h2><p>...</p></div>
+        <div id="week12" class="week bg12"><h2>12주차: 프레임워크 소개</h2><p>...</p></div>
+        <div id="week13" class="week bg13"><h2>13주차: 반응형 웹 디자인</h2><p>...</p></div>
+        <div id="week14" class="week bg14"><h2>14주차: 웹 성능 최적화</h2><p>...</p></div>
+        <div id="week15" class="week bg15"><h2>15주차: 기말고사</h2><p>...</p></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
