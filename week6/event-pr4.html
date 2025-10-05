@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Practice 4</title>
+    <script>
+        function showimg(){
+            let fruits = document.getElementsByName("friut");
+            let found =null;
+            for(let i=0; i<fruits.length; i++){
+                if(fruits[i].checked){
+                    found = fruits[i];
+                    break;
+                }
+            }
+            if(found){
+                let img = document.getElementById("img");
+                img.src = found.value;  
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>라디오 버튼을 클릭하면 이미지를 출력합니다.</h2>
+    <hr>
+    <input type="radio" name="friut" value="../img/apple.png" onchange="showimg();">사과
+    <input type="radio" name="friut" value="../img/banana.png" onchange="showimg();">바나나
+    <input type="radio" name="friut" value="../img/mango.png" onchange="showimg();">망고
+    <br><br>
+    <img id="img" src="" alt="">
+</body>
+</html>

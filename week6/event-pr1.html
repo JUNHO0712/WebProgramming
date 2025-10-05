@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Practice 1</title>
+    <script>
+        function init(){
+            let btn = document.querySelector("button");
+            let output = document.getElementById("output");
+            btn.addEventListener("click", function() {
+                output.innerHTML = "버튼이 클릭되었습니다.";
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onload="init()">클릭</button>
+    <p id ="output"></p>
+    <!-- <script>
+        let btn = document.querySelector("btn");
+        let output = document.getElementById("output");
+        btn.addEventListener("click", function() {
+            output.innerHTML = "버튼이 클릭되었습니다.";
+        });
+    </script> 
+    body에 스크립트 넣는 방법도 있음
+    -->
+</body>
+</html>
