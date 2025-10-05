@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function query() {
+            let ret = confirm("네이버로 이동?");
+            return ret;
+        }
+        function noAction(e) {
+            e.preventDefault();
+        }
+    </script>
+</head>
+<body>
+    <a href="https://www.naver.com" onclick="return query();">네이버로 이동</a>
+    <hr>
+<input type="checkbox"> 빵 (체크 됨) <br>
+<input type="checkbox" onclick="noAction(event);"> 우유 (체크 안 됨) <br>
+</body>
+</html>
