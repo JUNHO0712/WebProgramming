@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>타이머 시작 / 정지</title>
+    <style>
+        body { text-align: center; margin-top: 50px; font-family: sans-serif; }
+        button { padding: 10px 20px; margin: 5px; font-size: 16px; }
+        h2 { color: #1d4ed8; }
+    </style>
+    <script>
+        let time = 0;       // 시간(초)
+        let timerId = null; // setInterval ID 저장용
+
+        function startTimer() {
+            // 이미 타이머가 실행 중이면 중복 실행 방지
+            if (timerId !== null) return;
+
+            timerId = setInterval(() => {
+                time++;
+                document.getElementById("timeDisplay").innerText = time;
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerId);
+            timerId = null; // 멈춘 후 다시 시작할 수 있도록 초기화
+        }
+    </script>
+</head>
+<body>
+
+    <button onclick="startTimer()">시작</button>
+    <button onclick="stopTimer()">정지</button>
+
+    <p><strong>시간: <span id="timeDisplay">0</span>초</strong></p>
+</body>
+</html>
