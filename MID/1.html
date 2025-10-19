@@ -1,25 +1,37 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- HTML5 문서임을 선언 -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> <!-- 문서의 인코딩을 UTF-8로 설정 (한글 깨짐 방지) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 화면 크기에 맞게 표시 -->
     <title>Document</title>
+
     <script>
+        // 라디오 버튼을 클릭했을 때 호출되는 함수
         function check(e) {
+            // 사용자가 선택한 라디오 버튼 중 체크된 요소를 찾고, 그 id 값을 가져옴
             const selected = document.querySelector('input[name="answer"]:checked').id;
+
+            // 선택된 id가 "5"이면 (즉, 2+3의 정답을 맞췄다면)
             if (selected === "5") {
+                // 새 창을 열고 o.html을 표시 (정답)
                 window.open('o.html', 'newwindow', 'width=100,height=120,top=300,left=300');
             } else {
+                // 정답이 아니면 x.html을 표시 (오답)
                 window.open('x.html', 'newwindow', 'width=100,height=120,top=300,left=300');
             }
         }
     </script>
 </head>
+
 <body>
+    <!-- 문제 출력 -->
     2 + 3 = ?<br><br>
+
+    <!-- 보기 4개 (라디오 버튼) -->
+    <!-- 클릭할 때마다 check(this) 함수가 실행됨 -->
     <input type="radio" name="answer" onclick="check(this)" id="1">1<br>
     <input type="radio" name="answer" onclick="check(this)" id="3">3<br>
-    <input type="radio" name="answer" onclick="check(this)" id="5">5<br>
+    <input type="radio" name="answer" onclick="check(this)" id="5">5<br> <!-- 정답 -->
     <input type="radio" name="answer" onclick="check(this)" id="7">7<br>
 
 </body>

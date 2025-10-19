@@ -6,13 +6,14 @@
     <title>Document</title>
     <script>
         function check(e) {
-            const spans = document.querySelectorAll('span');
-            spans.forEach(span => span.style.backgroundColor = '');
-            let select = e.nextElementSibling;
-            if (select.textContent.trim() === "5") {
-                select.style.backgroundColor = 'lightgreen';
+            const spans = document.querySelectorAll('span'); // 모든 span 요소 선택
+            spans.forEach(span => span.style.backgroundColor = ''); // 이전에 색칠된 배경 초기화
+
+            let select = e.nextElementSibling; // 클릭한 input 바로 다음의 span 요소 선택
+            if (select.textContent.trim() === "5") { // span 안의 텍스트가 "5"이면
+                select.style.backgroundColor = 'lightgreen'; // 정답: 초록색 배경
             } else {
-                select.style.backgroundColor = 'lightpink';
+                select.style.backgroundColor = 'lightpink'; // 오답: 분홍색 배경
             }
         }
     </script>
@@ -25,3 +26,5 @@
     <input type="radio" name="answer" onclick="check(this)"><span>7</span><br>
 </body>
 </html>
+
+<!--span이란 인라인 요소로, 짧은 텍스트나 문장의 일부분에 스타일을 적용하거나 구분하기 위해 사용-->

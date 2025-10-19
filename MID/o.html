@@ -4,19 +4,29 @@
 	<meta charset="utf-8">
 	<title>정답</title>
 	<script>
+		// ✅ 원을 그리는 함수 정의
 		function drawCircle(ctx, x, y, radius) {
-			ctx.beginPath();
-			ctx.arc(x, y, radius, 0, 2*Math.PI);
-			ctx.stroke();
+			ctx.beginPath(); // 새로운 선 그리기 시작
+			ctx.arc(x, y, radius, 0, 2*Math.PI); // 중심(x,y), 반지름, 0~2π(한 바퀴)
+			ctx.stroke(); // 선(윤곽선) 그리기
 		}
 	</script>
 </head>
+
 <body>
+	<!-- ✅ 캔버스 영역: 그림을 그릴 공간 -->
 	<canvas id="myCanvas" width="100" height="100" style="background-color:aliceblue"></canvas>
+
 	<script>
+		// ✅ 1. 캔버스 객체 가져오기
 		let canvas = document.getElementById("myCanvas");
+
+		// ✅ 2. 2D 그래픽 컨텍스트(그림 그릴 도구) 얻기
 		let context = canvas.getContext("2d");
-		drawCircle(context, 50, 50, 40);
+
+		// ✅ 3. 원 그리기 함수 호출
+		drawCircle(context, 50, 50, 40); 
+		// 중심 (50,50)에 반지름 40짜리 원을 그림
 	</script>
 </body>
 </html>

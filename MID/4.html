@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4</title>
-    <script>
-        function input(){
-            let info = prompt("이름과 나이를 입력하세요. ex) 박규나, 23");
-            let [name,age]=info.split(',');
-            name = name.trim();
-            age = age.trim();
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>4</title>
 </head>
 <body>
-    <div>
-        Officer 1:
-        <script>
-            let obj = new Object();
-            obj.name = name;
-            obj.age = age;
-        
-            document.write("by new Object - 이름 : " + name + ", 나이 : " + age );
-        </script>
+  <div>
+    Officer 1: <span id="officer1"></span><br>
+    Officer 2: <span id="officer2"></span><br>
+    Officer 3: <span id="officer3"></span><br>
+    Officer 4: <span id="officer4"></span><br>
+  </div>
 
+  <br><br>
+  <input type="button" value="Officer 정보 입력" onclick="inputInfo()">
 
-        <br>Officer 2: 
+  <script>
+    // 몇 번째 Officer에 채울지 카운터
+    let counter = 1;
 
+    function inputInfo() {
+      const info = prompt("이름과 나이를 입력하세요. 예) 백준호, 25");
+      if (!info) return; // 취소한 경우
 
+      const parts = info.split(',');
+      if (parts.length < 2) {
+        alert("형식은 '이름, 나이' 입니다.");
+        return;
+      }
 
-        <br>Officer 3: 
+      const name = parts[0].trim();
+      const age  = parts[1].trim();
 
+      // 현재 칸(span)에 출력
+      const id = "officer" + counter;            // officer1 ~ officer4
+      const target = document.getElementById(id);
+      if (!target) {
+        alert("더 이상 입력할 칸이 없습니다.");
+        return;
+      }
 
+      target.textContent = `이름 : ${name}, 나이 : ${age}`;
 
-        <br>Officer 4: 
-
-
-
-
-    </div>
-    <br><br>
-    <input type="button" value="Officer 정보 입력" onclick="input()">
+      // 다음 칸으로 이동 (최대 4까지)
+      counter = Math.min(counter + 1, 4);
+    }
+  </script>
 </body>
 </html>
