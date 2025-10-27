@@ -15,12 +15,19 @@
 
 <script>
 let t=null, sec=0, view=document.getElementById('view');
-document.getElementById('start').onclick=()=>{
-  clearInterval(t); sec=0; view.textContent='시간 : 0초';
-  t=setInterval(()=>{ sec++; view.textContent=`시간 : 백준호 시작 ${sec}초`; },1000);
+document.getElementById('start').onclick=function(){
+  clearInterval(t);
+  sec=0;
+  view.textContent='시간 : 0초';
+  t=setInterval(function(){
+    sec++;
+    view.textContent='시간 : 백준호 시작 ' + sec + '초';
+  },1000);
 };
-document.getElementById('stop').onclick=()=>{
-  clearInterval(t); t=null; view.textContent=`시간 : ${sec}초`;
+document.getElementById('stop').onclick=function(){
+  clearInterval(t);
+  t=null;
+  view.textContent='시간 : ' + sec + '초';
 };
 </script>
 </body>

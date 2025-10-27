@@ -13,7 +13,7 @@
 
 <script>
 const q=document.getElementById('q'), a=document.getElementById('a');
-a.addEventListener('keydown', e=>{
+a.addEventListener('keydown', function(e){
   if(e.key!=='Enter') return;
   a.style.background='';
   const p=q.value.replace(/\s+/g,'').split('+');
@@ -23,8 +23,14 @@ a.addEventListener('keydown', e=>{
   const typed=a.value.replace(/[^\d.-]/g,'').trim(); // 숫자만 추출
   const ans=Number(typed);
   if(!Number.isFinite(ans)){ a.style.background='orange'; a.value='숫자 오류'; return; }
-  if(ans===x+y){ a.style.background='skyblue'; a.value=`${typed} 백준호 정답`; }
-  else{ a.style.background='orange'; a.value=`${typed} 백준호 오답`; }
+
+  if(ans===x+y){
+    a.style.background='skyblue';
+    a.value=typed + ' 백준호 정답';
+  } else {
+    a.style.background='orange';
+    a.value=typed + ' 백준호 오답';
+  }
 });
 </script>
 </body>
