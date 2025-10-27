@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Flex & Grid 배치</title>
+<style>
+  body {margin:20px;}
+  .flex-box, .grid-box {
+    margin:10px;
+    padding:10px;
+    text-align:center;
+  }
+  .flex-box {display:flex;}
+  .grid-box {display:grid; grid-template-columns:repeat(2,1fr);}
+  .item {border:1px solid black;margin:5px;padding:20px;}
+  .c1 {background-color:lightcoral;}
+  .c2 {background-color:lightblue;}
+  .c3 {background-color:lightgreen;}
+  .c4 {background-color:khaki;}
+  .c5 {background-color:plum;}
+</style>
+</head>
+<body>
+
+<h3>1. Flex 배치</h3>
+<div class="flex-box">
+  <div class="item c1">1번 영역</div>
+  <div class="item c2">2번 영역</div>
+  <div class="item c3">3번 영역</div>
+  <div class="item c4">4번 영역</div>
+  <div class="item c5">5번 영역</div>
+</div>
+
+<hr><hr>
+
+<h3>2. Grid 배치 (2열)</h3>
+<div class="grid-box">
+  <div class="item c1">1번 영역</div>
+  <div class="item c2">2번 영역</div>
+  <div class="item c3">3번 영역</div>
+  <div class="item c4">4번 영역</div>
+  <div class="item c5">5번 영역</div>
+</div>
+
+</body>
+</html>

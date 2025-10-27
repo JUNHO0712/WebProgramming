@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><title>합 계산</title>
+<style>
+ body{font-family:system-ui;margin:30px}
+ label{margin-right:6px} input{padding:6px;margin:6px 10px 6px 0}
+</style>
+</head>
+<body>
+<label>문제:</label><input id="q">
+<label>답:</label><input id="a">
+
+<script>
+const q=document.getElementById('q'), a=document.getElementById('a');
+a.addEventListener('keydown', e=>{
+  if(e.key!=='Enter') return;
+  a.style.background='';
+  const p=q.value.replace(/\s+/g,'').split('+');
+  if(p.length!==2){ a.style.background='orange'; a.value='문제 오류'; return; }
+  const x=Number(p[0]), y=Number(p[1]);
+  if(!Number.isFinite(x)||!Number.isFinite(y)){ a.style.background='orange'; a.value='숫자 오류'; return; }
+  const typed=a.value.replace(/[^\d.-]/g,'').trim(); // 숫자만 추출
+  const ans=Number(typed);
+  if(!Number.isFinite(ans)){ a.style.background='orange'; a.value='숫자 오류'; return; }
+  if(ans===x+y){ a.style.background='skyblue'; a.value=`${typed} 백준호 정답`; }
+  else{ a.style.background='orange'; a.value=`${typed} 백준호 오답`; }
+});
+</script>
+</body>
+</html>

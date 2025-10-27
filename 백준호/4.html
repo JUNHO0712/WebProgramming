@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><title>타이머</title>
+<style>
+  body{font-family:system-ui;margin:30px}
+  button{margin-right:8px;padding:6px 12px}
+</style>
+</head>
+<body>
+<button id="start">시작</button>
+<button id="stop">정지</button>
+<br><br>
+<div id="view">시간 : 0초</div>
+
+<script>
+let t=null, sec=0, view=document.getElementById('view');
+document.getElementById('start').onclick=()=>{
+  clearInterval(t); sec=0; view.textContent='시간 : 0초';
+  t=setInterval(()=>{ sec++; view.textContent=`시간 : 백준호 시작 ${sec}초`; },1000);
+};
+document.getElementById('stop').onclick=()=>{
+  clearInterval(t); t=null; view.textContent=`시간 : ${sec}초`;
+};
+</script>
+</body>
+</html>

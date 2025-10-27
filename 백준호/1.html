@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>계좌 관리</title>
+<style>
+ body { font-family:system-ui; margin:40px; }
+ button { margin-right:8px; }
+</style>
+</head>
+<body>
+
+<h3>계좌 관리 프로그램</h3>
+<p>
+  <button onclick="showAccount()">계좌 확인</button>
+  <button onclick="Deposite()">입금</button>
+  <button onclick="Withdraw()">출금</button>
+</p>
+<div id="out">초기 화면: 버튼을 눌러주세요.</div>
+
+<script>
+const BackAccount = {
+  owner:"백준호", number:"123-456-789", balance:10000,
+  inquire(){ return "예금주: "+this.owner+"\n계좌번호: "+this.number+"\n현재 잔액: "+this.balance.toLocaleString()+"원"; },
+  deposite(amount){ this.balance+=amount; return "입금: "+amount.toLocaleString()+"원\n"+this.inquire(); },
+  widhdraw(amount){
+    if(amount>this.balance) return "출금 실패: 잔액 부족\n"+this.inquire();
+    this.balance-=amount; return "출금: "+amount.toLocaleString()+"원\n"+this.inquire();
+  }
+};
+
+const out=document.getElementById("out");
+function render(t){ out.innerHTML=String(t).replace(/(\r\n|\r|\n)/g,"<br>"); }
+
+function showAccount(){ render(BackAccount.inquire()); }
+function readAmount(msg){
+  const i=prompt(msg);
+  if(i===null)return null;
+  const v=Number(i);
+  if(!Number.isFinite(v)||v<=0){alert("올바른 금액을 입력하세요.");return null;}
+  return v;
+}
+function Deposite(){const m=readAmount("입금할 금액을 입력하세요:");if(m!==null)render(BackAccount.deposite(m));}
+function Withdraw(){const m=readAmount("출금할 금액을 입력하세요:");if(m!==null)render(BackAccount.widhdraw(m));}
+</script>
+</body>
+</html>
