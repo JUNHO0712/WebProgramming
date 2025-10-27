@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+    <script>
+        let second = 0;
+        let timerID;
+        function go(){
+            second ++;
+            let time = document.getElementById("time");
+            time.innerHTML = "백준호 시작 "+second;
+        }
+        function start(){
+            timerID = setInterval("go();", 1000);
+        }
+        function stop(){
+            clearInterval(timerID)
+            let time = document.getElementById("time");
+            time.innerHTML = second;
+            second = 0;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="button" value="시작" onclick="start()">
+        <!--<button onlick="stop();">정지</button>-->
+        <input type="button" value="정지" onclick="stop()"> 
+    </div>
+    <h3>시간 : <span id="time">0</span>초</h3>
+</body>
+</html>
