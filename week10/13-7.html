@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>watchPosition()으로 반복 위치 서비스</title>
+</head>
+<body>
+  <h3>watchPosition()으로 반복 위치 서비스</h3>
+  <hr>
+
+  <!-- 위치 정보 출력 영역 -->
+  <div id="msg">이곳에 위치 정보 출력</div>
+
+  <!-- OpenStreetMap을 표시할 iframe -->
+  <iframe id="map" width="425" height="350" frameborder="0"
+          scrolling="no" marginheight="0" marginwidth="0"></iframe><br>
+
+  <script>
+    // watchPosition() 옵션 설정
+    let options = {
+      enableHighAccuracy: false, // 정확도 우선 여부
+      timeout: 5000,             // 최대 대기 시간(ms)
+      maximumAge: 0              // 캐시된 위치 허용 시간(ms)
+    };
+
+    let count = 0;   // 반복 호출 횟수
+    let watchID;     // watchPosition() ID 저장용
+
+    if (navigator.geolocation) {
+      // 위치 변경 시 changed() 실행, 에러 콜백은 null
+      watchID = navigator.geolocation.watchPosition(changed, null, options);
+    } else {
+      alert("이 브라우저는 위치 정보를 지원하지 않습니다.");
+    }
+
+    // 위치가 바뀔 때마다 실행되는 콜백 함수
+    function changed(position) {
+      // 5번 위치 갱신 후 중지 (테스트용)
+      if (count == 5) {
+        navigator.geolocation.clearWatch(watchID);  // 반복 서비스 종료
+        document.getElementById("msg").innerHTML = "위치 서비스 종료";
+        return;
+      }
+
+      // 새 위치 정보
+      let lat = position.coords.latitude;   // 위도
+      let lon = position.coords.longitude;  // 경도
+
+      // 정보 출력
+      let text = count + " : (위도 " + lat + "°, 경도 " + lon + "°)로 변경됨<br>";
+      document.getElementById("msg").innerHTML = text;
+
+      // 지도 갱신
+      let map = document.getElementById("map");
+      map.src = "https://www.openstreetmap.org/export/embed.html?bbox=" +
+                (parseFloat(lon) - 0.01) + "%2C" +
+                (parseFloat(lat) - 0.01) + "%2C" +
+                (parseFloat(lon) + 0.01) + "%2C" +
+                (parseFloat(lat) + 0.01);
+
+      // 호출 횟수 증가
+      count++;
+    }
+  </script>
+</body>
+</html>

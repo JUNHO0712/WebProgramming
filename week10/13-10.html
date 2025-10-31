@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>타이머를 가진 웹 워커 만들기</title>
+</head>
+<body>
+  <h3>타이머를 가진 웹 워커 만들기</h3>
+  <hr>
+
+  <div>
+    <span id="timer">타이머 카운트</span>
+  </div>
+  <button type="button" id="start" onclick="start()">start</button>
+  <button type="button" id="stop" onclick="stop()">stop</button>
+
+  <script>
+    // 워커 생성
+    let addWorker = new Worker("timer.js");
+
+    // 워커로부터 메시지를 받을 때 (타이머 카운트 갱신)
+    addWorker.onmessage = function(e) {
+      document.getElementById("timer").innerHTML = e.data;
+    };
+
+    // start 버튼 클릭 시 워커에 'start' 메시지 전송
+    function start() {
+      addWorker.postMessage("start");
+    }
+
+    // stop 버튼 클릭 시 워커에 'stop' 메시지 전송
+    function stop() {
+      addWorker.postMessage("stop");
+    }
+  </script>
+</body>
+</html>

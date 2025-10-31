@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>getCurrentPosition()으로 현재 위치 파악</title>
+</head>
+<body>
+  <h3>getCurrentPosition()으로 현재 위치 파악</h3>
+  <hr>
+
+  <div id="msg">이곳에 위치 정보 출력</div>
+
+  <script>
+    // 브라우저가 위치 정보 기능을 지원하는지 확인
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(success); // 현재 위치 정보 요청
+    else
+      alert("이 브라우저는 위치 정보를 지원하지 않습니다.");
+
+    // 위치가 파악되면 success() 함수 호출
+    function success(position) {
+      let lat = position.coords.latitude;   // 위도
+      let lon = position.coords.longitude;  // 경도
+      let acc = position.coords.accuracy;   // 정확도(미터 단위)
+
+      // 너무 긴 숫자는 보기 좋게 6자리까지만 표시
+      lat = lat.toPrecision(6);
+      lon = lon.toPrecision(6);
+
+      // 현재 날짜와 시간
+      let now = new Date(position.timestamp);
+
+      // 출력할 문자열 구성
+      let text = "현재 시간 : " + now.toUTCString() + "<br>";
+      text += "현재 위치 (위도 " + lat + ", 경도 " + lon + ")<br>";
+      text += "정확도 : " + acc + " m<br>";
+
+      // 화면에 표시
+      document.getElementById("msg").innerHTML = text;
+    }
+  </script>
+</body>
+</html>

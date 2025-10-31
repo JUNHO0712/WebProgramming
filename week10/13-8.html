@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>1~10까지 더하는 워커 태스크 만들기</title>
+</head>
+<body>
+  <h3>1~10까지 더하는 워커 태스크 만들기</h3>
+  <hr>
+
+  <div>1에서 10까지의 합은 <span id="sum" style="color : rgb(9, 122, 77)"></span></div>
+
+  <script>
+    // 🔹 워커 객체 생성 (add1to10.js 파일을 백그라운드에서 실행)
+    let addWorker = new Worker("add1to10.js");
+
+    // 🔹 워커가 계산을 끝내고 메시지를 보내면 결과를 화면에 표시
+    addWorker.onmessage = function(e) {
+      // e.data 에는 워커가 postMessage()로 보낸 값이 들어 있음
+      document.getElementById("sum").innerHTML = e.data;
+    };
+  </script>
+</body>
+</html>

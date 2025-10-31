@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>현재 위치와 지도 출력</title>
+</head>
+<body>
+  <h3>현재 위치와 지도 출력</h3>
+  <hr>
+
+  <!-- 위치 정보 출력 -->
+  <div id="msg">이곳에 위치 정보 출력</div>
+
+  <!-- 지도를 표시할 iframe -->
+  <iframe id="map" width="425" height="350" frameborder="0"
+          scrolling="no" marginheight="0" marginwidth="0"></iframe><br>
+
+  <!-- 큰 지도로 보기 링크 -->
+  <a id="bigmaplink" target="_blank">새 창에 큰 지도 보기</a>
+
+  <script>
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(success); // 현재 위치 정보 요청
+    else
+      alert("이 브라우저는 위치 정보를 지원하지 않습니다.");
+
+    // 위치 파악 성공 시 실행되는 콜백 함수
+    function success(position) {
+      let lat = position.coords.latitude;   // 위도
+      let lon = position.coords.longitude;  // 경도
+      let acc = position.coords.accuracy;   // 정확도
+
+      // 너무 긴 숫자는 보기 좋게 6자리까지만 표시
+      lat = lat.toPrecision(6);
+      lon = lon.toPrecision(6);
+
+      // 현재 시간
+      let now = new Date(position.timestamp);
+
+      // 화면에 출력할 정보 구성
+      let text = "현재 시간: " + now.toUTCString() + "<br>";
+      text += "현재 위치 (위도 " + lat + "°, 경도 " + lon + "°)<br>";
+      text += "정확도: " + acc + "m<br>";
+      document.getElementById("msg").innerHTML = text;
+
+      // 📍 OpenStreetMap 지도 iframe에 표시
+      let map = document.getElementById("map");
+      map.src = "https://www.openstreetmap.org/export/embed.html?bbox=" +
+                (parseFloat(lon) - 0.01) + "%2C" +
+                (parseFloat(lat) - 0.01) + "%2C" +
+                (parseFloat(lon) + 0.01) + "%2C" +
+                (parseFloat(lat) + 0.01);
+
+      // 📍 “새 창에서 보기” 링크 설정
+      let maplink = document.getElementById("bigmaplink");
+      let zoom = 15; // 숫자가 클수록 자세한 지도
+      maplink.href = "https://www.openstreetmap.org/#map=" +
+                     zoom + "/" + lat + "/" + lon;
+    }
+  </script>
+</body>
+</html> 

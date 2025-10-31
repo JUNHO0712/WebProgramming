@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>시작과 끝 숫자를 전달받아 합을 구하는 워커 태스크</title>
+</head>
+<body>
+  <h3>시작과 끝 숫자를 전달받아 합을 구하는 워커 태스크</h3>
+  <hr>
+
+  <!-- 입력칸 2개: 시작과 끝 숫자 -->
+  <input id="from" type="text" size="10"> ~
+  <input id="to" type="text" size="10">
+  =
+  <input id="sum" type="text" size="10" readonly>
+  <button type="button" id="add" onclick="send()">add</button>
+
+  <script>
+    // 워커 생성 (add.js 파일 실행)
+    let addWorker = new Worker("add.js");
+
+    // 버튼 클릭 시 워커로 데이터 전송
+    function send() {
+      // 시작과 끝 숫자를 가져와 객체 형태로 구성
+      let parameters = {
+        from: document.getElementById("from").value,
+        to: document.getElementById("to").value
+      };
+
+      // 워커에게 전달
+      addWorker.postMessage(parameters);
+    }
+
+    // 워커가 계산 결과를 돌려주면 화면에 표시
+    addWorker.onmessage = function(e) {
+      // e.data = 워커가 postMessage로 보낸 합(sum)
+      document.getElementById("sum").value = e.data;
+    };
+  </script>
+</body>
+</html>
