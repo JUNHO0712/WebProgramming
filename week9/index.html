@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Web Storage Test</title>
+</head>
+<body>
+  <h3>웹 스토리지 테스트</h3>
+  <button onclick="save()">저장</button>
+  <button onclick="read()">읽기</button>
+  <div id="result"></div>
+
+  <script>
+    function save() {
+      localStorage.setItem("user", "백준호");
+      alert("로컬 스토리지에 저장 완료!");
+    }
+    function read() {
+      const value = localStorage.getItem("user");
+      document.getElementById("result").textContent = "저장된 값: " + value;
+    }
+  </script>
+</body>
+</html>

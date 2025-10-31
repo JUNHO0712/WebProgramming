@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세션 스토리지에 쓰기 / 읽기</title>
+</head>
+<body>
+    <h3>세션 스토리지에 구입 리스트 저장 / 검색</h3>
+    <hr>
+    품목명 : <input type="text" id="item" />
+    개수 : <input type="number" id="count" />
+    <button type = "button" id = "save" onclick="store()">저장</button>
+    <button type = "button" id = "read" onclick="read()">읽기</button>
+    <script>
+        let item = document.getElementById("item");
+        let count = document.getElementById("count");
+        // 이 전역변수 js 코드가 위에 있는 html 요소들(품목명, 개수) 보다 나중에 나와야 참조가 가능함
+        // DOM이 먼저 만들어지고 JS 코드가 실행
+        function store(){
+            if(!window.sessionStorage){
+                alert("이 브라우저는 세션 스토리지를 지원하지 않습니다.");
+                return;
+            }
+            sessionStorage.setItem(item.value, count.value);
+        }
+        function read(){
+            if(!window.sessionStorage){
+                alert("이 브라우저는 세션 스토리지를 지원하지 않습니다.");
+                return;
+            }
+            let val = sessionStorage.getItem(item.value);
+            if(val == null){
+                alert(item.value + "해당 품목이 없습니다.");
+            }
+            else{
+                count.value = val;
+                }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방문 카운트 쿠키</title>
+    <script>
+        function GetCookie(name) {
+            let pairs = document.cookie.split(";"); // 쿠키들을 ;로 구분하여 배열로 만듦
+            for (let i = 0; i < pairs.length; i++) {
+                let pair = pairs[i].trim(); // 쿠키 앞뒤 공백 제거
+                let unit = pair.split("=");
+                if (pair[0] === name) {
+                    return unescape(pair[1]);
+                }
+        }
+        return null;
+    }
+    // 쿠키 설정 함수
+    function SetCookie(name, value, expireDate) {
+        let cookieStr = name + "=" + escape(value) + ((expireDate ==null)? "": (";expires=" + expireDate.toUTCString()));
+        document.cookie = cookieStr;
+    }
+    </script>
+</head>
+<body>
+    <script>
+        let username = GetCookie("username");
+        let count = GetCookie("count");
+        let expire = new Date();
+        if(username == null){
+            count = 0;
+            username = prompt("이름을 입력하세요","");
+            if(username == null ){
+                alert("이름을 입력하지 않아 아무개로 저장됩니다.");
+                username = "아무개";
+            }else{
+                expire.setTime(expire.getTime() + 365*24*60*60*1000); // 1년
+                SetCookie("username", username, expire);
+        } 
+    }
+    count++;
+    expire.setTime(expire.getTime() + 365*24*60*60*1000); // 1년
+    SetCookie("count", count, expire);
+    document.write("<h3>"+username+"님은 "+count+"번째 방문입니다.</h3>");
+    </script>
+    
+</body>
+</html>
