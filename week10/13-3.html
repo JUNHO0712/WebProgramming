@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>비디오 원본 크기로 출력</title>
+</head>
+<body>
+  <h3>비디오 원본 크기로 출력</h3>
+  <hr>
+
+  <!-- 🎥 의도적으로 처음엔 0x0으로 설정 -->
+  <video id="video" width="0" height="0" controls>
+    <source src="media/bear.mp4" type="video/mp4">
+    웹 브라우저가 video 태그를 지원하지 않습니다.
+  </video>
+
+  <script>
+    let video = document.getElementById("video");
+
+    // 메타데이터(영상 정보)가 모두 로드되면 실행 -> 실제 영상 크기 알 수 있음(onloadedmetadata)
+    video.onloadedmetadata = function(e) {
+      // 원본 비디오의 폭과 높이를 경고창으로 표시
+      alert(video.videoWidth + " x " + video.videoHeight);
+
+      // video 태그의 크기를 원본 크기로 조정
+      // 비디오의 해상도 정보는 videoWidth, videoHeight 프로퍼티에 저장되어 있음, videoWidth, videoHeight에 따라 해상도 조정
+      video.width = video.videoWidth;
+      video.height = video.videoHeight;
+    };
+  </script>
+</body>
+</html>

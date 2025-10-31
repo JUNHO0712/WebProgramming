@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>자바스크립트로 오디오 제어</title>
+</head>
+<body>
+  <h3>자바스크립트로 오디오 제어</h3>
+  <hr>
+
+  <!-- 🎵 오디오 파일 -->
+  <audio id="audio" src="media/EmbraceableYou.mp3"></audio>
+
+  <!-- 메시지 출력 영역 -->
+  <div id="msg">이곳에 오디오 제어 메시지 출력</div>
+
+  <!-- 버튼들 -->
+  <button type="button" id="play" onclick="control(event)">play</button>
+  <button type="button" id="pause" onclick="control(event)">pause</button>
+  <button type="button" id="replay" onclick="control(event)">replay</button>
+  <button type="button" id="vol-" onclick="control(event)">vol-</button>
+  <button type="button" id="vol+" onclick="control(event)">vol+</button>
+  <button type="button" id="mute on/off" onclick="control(event)">mute on/off</button>
+
+  <script>
+    let div = document.getElementById("msg");
+    let audio = document.getElementById("audio");
+
+    function control(e) {
+      let id = e.target.id; // 클릭한 버튼의 id
+
+      if (id == "play") {              // ▶ 재생
+        audio.play();
+        div.innerHTML = "재생 중입니다.";
+      }
+      else if (id == "pause") {        // ⏸ 일시 정지
+        audio.pause();
+        div.innerHTML = "일시 정지되었습니다.";
+      }
+      else if (id == "replay") {       // 🔁 처음부터 재생
+        audio.load();      // src에 지정된 파일 다시 로드
+        audio.play();
+        div.innerHTML = "처음부터 다시 재생합니다.";
+      }
+      else if (id == "vol-") {         // 🔉 음량 감소
+        audio.volume -= 0.1;
+        if (audio.volume < 0) audio.volume = 0;
+        div.innerHTML = "음량 0.1 감소 → 현재: " + audio.volume.toFixed(1);
+      }
+      else if (id == "vol+") {         // 🔊 음량 증가
+        audio.volume += 0.1;
+        if (audio.volume > 1) audio.volume = 1;
+        div.innerHTML = "음량 0.1 증가 → 현재: " + audio.volume.toFixed(1);
+      }
+      else if (id == "mute on/off") {  // 🔇 음소거 토글
+        audio.muted = !audio.muted;
+        if (audio.muted)
+          div.innerHTML = "음소거 ON";
+        else
+          div.innerHTML = "음소거 해제";
+      }
+    }
+  </script>
+</body>
+</html>
