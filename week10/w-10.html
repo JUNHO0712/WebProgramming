@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>곱셈하기</title>
+<script>
+let Worker = new Worker("calc.js"); // 워커 생성
+
+// 워커로부터 결과값을 받았을 때 실행
+Worker.onmessage = function(e) {
+  document.getElementById("ans").value = e.data; // 결과 출력
+};
+
+// 버튼 클릭 시 실행
+function send() {
+  let data = {
+    from: document.getElementById("from").value,
+    to: document.getElementById("to").value
+  };
+  Worker.postMessage(data); // 워커로 데이터 전송
+}
+</script>
+</head>
+<body>
+  <h2>곱셈하기</h2><hr>
+  <input type="number" id="from"> x
+  <input type="number" id="to">
+  <input type="button" value="곱하기" onclick="send()">
+  <input type="text" id="ans" readonly>
+</body>
+</html>
