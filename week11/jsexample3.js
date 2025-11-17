@@ -8,9 +8,9 @@ function printStudentInfo(student) {
 console.log(`이름: ${student.name}, 점수: ${student.score}`);
 }
 
-console.log("=== for문 ===");
-for (let i = 0; i < students.length; i++) {
-  printStudentInfo(students[i]);
+console.log("=== for...of ===");
+for (const student of students) {
+  printStudentInfo(student);
 }
 
 console.log("=== forEach ===");
@@ -18,8 +18,5 @@ students.forEach(function(student) {
   printStudentInfo(student);
 });
 
-console.log("=== for + forEach 조합 ===");
-// 바깥 for문 → 강제로 1번만 실행 (예시용)
-for (let i = 0; i < 1; i++) {
-  students.forEach(student => printStudentInfo(student));
-}
+console.log("=== forEach() + callback function ===");
+students.forEach(printStudentInfo);

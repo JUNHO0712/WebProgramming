@@ -19,19 +19,16 @@ const avg = calcAverage(student);
 console.log(`${student.name}의 평균 점수: ${avg.toFixed(2)}`);
 }
 
-console.log("=== for문 ===");
-for (let i = 0; i < students.length; i++) {
-  printResult(students[i]);
+console.log("=== for...of ===");
+for (const student of students) {
+  printResult(student);
 }
+
 
 console.log("=== forEach ===");
 students.forEach(student => {
   printResult(student);
 });
 
-console.log("=== for + forEach 조합 ===");
-for (let i = 0; i < 1; i++) {
-  students.forEach(student => {
-    printResult(student);
-  });
-}
+console.log("=== forEach() + callback function ===");
+students.forEach(printResult);
