@@ -1,0 +1,10 @@
+console.log('start....');
+
+process.on('exit', () => {
+    console.log('exit 이벤트 발생함');
+});
+
+setTimeout(() => {
+    console.log('2초 후에 시스템 종료 시도...');
+    process.exit();
+}, 2000);
