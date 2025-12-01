@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "body-parser": "^2.2.1",
+    "serve-static": "^2.2.0"
+  }
+}
