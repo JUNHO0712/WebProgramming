@@ -7,6 +7,7 @@ const students = [
 ];
 
 const upper80StudentsSum = students.filter(s => s.math > 80).map(s => s.math).reduce((a, b) => a + b);
+//reduce의 초기값이 없으면 배열의 첫번째 요소를 a(누적값)로 사용, 초기값은 주는것이 좋음
 
 console.log(upper80StudentsSum); // 261
 console.log('---------------');
