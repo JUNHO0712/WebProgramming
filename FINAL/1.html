@@ -22,15 +22,20 @@
         }
 
         function init() {
+            const colorSelect = document.querySelector("select");
+            const radios = document.querySelectorAll('input[name="fruit-image"]');
+
+            colorSelect.addEventListener("change", change_backgroundColor);
+            radios.forEach((radio) => radio.addEventListener("change", select_image));
+
             const savedColor = localStorage.getItem("backgroundColor");
             if (savedColor) {
                 document.body.style.backgroundColor = savedColor;
-                document.querySelector("select").value = savedColor;
+                colorSelect.value = savedColor;
             }
             const savedImage = localStorage.getItem("selectedImage");
             if (savedImage) {
                 document.getElementById("img_place").src = savedImage;
-                const radios = document.querySelectorAll('input[name="fruit-image"]');
                 radios.forEach((radio) => {
                     if (radio.value === savedImage) {
                         radio.checked = true;
@@ -40,19 +45,19 @@
         }
     </script>
 </head>
-<body>
+<body onload="init()">
     배경색:
     <select>
-        <option>lightblue</option>
-        <option>beigh</option>
-        <option>lightgrey</option>
+        <option value="lightblue">lightblue</option>
+        <option value="beige">beige</option>
+        <option value="lightgrey">lightgrey</option>
     </select>
     <br><br>
     <hr>
     이미지 : 
-    <input type = 'radio' name="fruit-image" value="apple.png" >사과
-    <input type = 'radio' name="fruit-image" value="mango.png">망고
-    <input type = 'radio' name="fruit-image" value="banana.png">바나나
+    <input type = 'radio' name="fruit-image" value="media/apple.png" >사과
+    <input type = 'radio' name="fruit-image" value="media/mango.png">망고
+    <input type = 'radio' name="fruit-image" value="media/banana.png">바나나
     <br><br>
     <img src="" id="img_place" alt="여기에 이미지가 나타납니다.">
 </body>
